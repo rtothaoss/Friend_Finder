@@ -23,14 +23,14 @@
         <hr class="my-4">
         <h3>About You</h3>
         <p>Name&#40;Required&#41;</p>
-        <input class="form-control" type="text" placeholder="">
+        <input id='userName' class="form-control" type="text" placeholder="">
         <p>Link to Photo Image&#40;Required&#41;</p>
-        <input class="form-control" type="text" placeholder="">
+        <input id='userImage' class="form-control" type="text" placeholder="">
         <hr class="my-4">
         <h3>Question 1</h3>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Your mind is always buzzing with unexplored ideas and plans.</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="question1">
                 <option value="" selected disabled>Select An Option</option>
                 <option>1&#40;Strongly Disagree&#41;</option>
                 <option>2</option>
@@ -43,7 +43,7 @@
         <div class="form-group">
             <label for="exampleFormControlSelect1">Generally speaking, you rely more on your experience than your
                 imagination.</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="question2">
                 <option value="" selected disabled>Select An Option</option>
                 <option>1&#40;Strongly Disagree&#41;</option>
                 <option>2</option>
@@ -56,7 +56,7 @@
         <div class="form-group">
             <label for="exampleFormControlSelect1">You find it easy to stay relaxed and focused even when there is some
                 pressure.</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="question3">
                 <option value="" selected disabled>Select An Option</option>
                 <option>1&#40;Strongly Disagree&#41;</option>
                 <option>2</option>
@@ -68,7 +68,7 @@
         <h3>Question 4</h3>
         <div class="form-group">
             <label for="exampleFormControlSelect1">You rarely do something just out of sheer curiosity.</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="question4">
                 <option value="" selected disabled>Select An Option</option>
                 <option>1&#40;Strongly Disagree&#41;</option>
                 <option>2</option>
@@ -80,7 +80,7 @@
         <h3>Question 5</h3>
         <div class="form-group">
             <label for="exampleFormControlSelect1">People can rarely upset you.</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="question5">
                 <option value="" selected disabled>Select An Option</option>
                 <option>1&#40;Strongly Disagree&#41;</option>
                 <option>2</option>
@@ -93,7 +93,7 @@
         <div class="form-group">
             <label for="exampleFormControlSelect1">It is often difficult for you to relate to other people’s
                 feelings.</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="question6">
                 <option value="" selected disabled>Select An Option</option>
                 <option>1&#40;Strongly Disagree&#41;</option>
                 <option>2</option>
@@ -106,7 +106,7 @@
         <div class="form-group">
             <label for="exampleFormControlSelect1">In a discussion, truth should be more important than people’s
                 sensitivities.</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="question7">
                 <option value="" selected disabled>Select An Option</option>
                 <option>1&#40;Strongly Disagree&#41;</option>
                 <option>2</option>
@@ -118,7 +118,7 @@
         <h3>Question 8</h3>
         <div class="form-group">
             <label for="exampleFormControlSelect1">You rarely get carried away by fantasies and ideas.</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="question8">
                 <option value="" selected disabled>Select An Option</option>
                 <option>1&#40;Strongly Disagree&#41;</option>
                 <option>2</option>
@@ -131,7 +131,7 @@
         <div class="form-group">
             <label for="exampleFormControlSelect1">You think that everyone’s views should be respected regardless of
                 whether they are supported by facts or not.</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="question9">
                 <option value="" selected disabled>Select An Option</option>
                 <option>1&#40;Strongly Disagree&#41;</option>
                 <option>2</option>
@@ -144,7 +144,7 @@
         <div class="form-group">
             <label for="exampleFormControlSelect1">You feel more energetic after spending time with a group of
                 people.</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="question10">
                 <option value="" selected disabled>Select An Option</option>
                 <option>1&#40;Strongly Disagree&#41;</option>
                 <option>2</option>
@@ -154,7 +154,8 @@
             </select>
         </div>
 
-        <button type="button" class="btn btn-primary btn-lg btn-block"><i class="fas fa-check"></i>Submit</button>
+        <button id='searchBtn' type="button" class="btn btn-primary btn-lg btn-block"><i
+                class="fas fa-check"></i>Submit</button>
         <hr class="my-4">
     </div>
 
@@ -167,6 +168,39 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+    <script>
+
+        $("#searchBtn").on("click", function (event) {
+            event.preventDefault();
+
+            var newFriend = {
+                name: $('#userName').val().trim(),
+                photo: $('#userImage').val().trim(),
+                scores: [
+                    $("#question1").val().split('', 1),
+                    $("#question2").val().split('', 1),
+                    $("#question3").val().split('', 1),
+                    $("#question4").val().split('', 1),
+                    $("#question5").val().split('', 1),
+                    $("#question6").val().split('', 1),
+                    $("#question7").val().split('', 1),
+                    $("#question8").val().split('', 1),
+                    $("#question9").val().split('', 1),
+                    $("#question10").val().split('', 1)
+            ]
+            };
+            console.log(newFriend)
+
+            $.post("/api/friends", newFriend)
+                .then(function (data) {
+                    console.log(data)
+                    alert("Adding new friend..");
+                });
+        });
+
+    </script>
+
 
 
 </body>
