@@ -1,7 +1,7 @@
 var friendsArray = [
     {
         "name":"Ross",
-        "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+        "photo":"https://s3.amazonaws.com/fixd-wordpress-cdn/wp-content/uploads/2018/04/Picture-of-person.png",
         "scores":[
             5,
             5,
@@ -17,7 +17,7 @@ var friendsArray = [
       },
       {
         "name":"Mark",
-        "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+        "photo":"https://s3.amazonaws.com/fixd-wordpress-cdn/wp-content/uploads/2018/04/Picture-of-person.png",
         "scores":[
             3,
             3,

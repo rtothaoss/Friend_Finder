@@ -159,6 +159,27 @@
         <hr class="my-4">
     </div>
 
+    <div class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Friend Match!!!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -178,27 +199,33 @@
                 name: $('#userName').val().trim(),
                 photo: $('#userImage').val().trim(),
                 scores: [
-                    $("#question1").val().split('', 1),
-                    $("#question2").val().split('', 1),
-                    $("#question3").val().split('', 1),
-                    $("#question4").val().split('', 1),
-                    $("#question5").val().split('', 1),
-                    $("#question6").val().split('', 1),
-                    $("#question7").val().split('', 1),
-                    $("#question8").val().split('', 1),
-                    $("#question9").val().split('', 1),
-                    $("#question10").val().split('', 1)
-            ]
+                    $("#question2").val().substr(0, 1),
+                    $("#question1").val().substr(0, 1),
+                    $("#question3").val().substr(0, 1),
+                    $("#question4").val().substr(0, 1),
+                    $("#question5").val().substr(0, 1),
+                    $("#question6").val().substr(0, 1),
+                    $("#question7").val().substr(0, 1),
+                    $("#question8").val().substr(0, 1),
+                    $("#question9").val().substr(0, 1),
+                    $("#question10").val().substr(0, 1)
+                ]
             };
+           
             console.log(newFriend)
 
             $.post("/api/friends", newFriend)
                 .then(function (data) {
-                    // console.log(data)
-                    alert("Adding new friend..");
+                    $('.modal-body').empty();
+                    
+                    // var newFriendIMG = $('<img').attr('src', data[1].photo)
+                    $('.modal-body').append(data[0].name)
+                    $('.modal-body').append($('<img>').attr('src', data[1].photo))
+                    $('.modal').modal()
                 });
         });
 
+       
     </script>
 
 
