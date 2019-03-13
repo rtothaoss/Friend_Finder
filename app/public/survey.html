@@ -1,5 +1,5 @@
 <!doctype html>
- <html lang="en">
+<html lang="en">
 
 <head>
     <!-- Required meta tags -->
@@ -157,27 +157,32 @@
         <button id='searchBtn' type="button" class="btn btn-primary btn-lg btn-block"><i
                 class="fas fa-check"></i>Submit</button>
         <hr class="my-4">
+        <footer class="footer mt-4">
+            <div class="container">
+              <p><a href="#" id="clear">Clear Table</a> | <a href="https://github.com/rtothaoss/Friend_Finder">Github Repo</a> 
+            </div>
+          </footer>
     </div>
 
     <div class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Friend Match!!!</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Friend Match!!!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
+    </div>
 
 
     <!-- Optional JavaScript -->
@@ -211,13 +216,13 @@
                     $("#question10").val().substr(0, 1)
                 ]
             };
-           
+
             console.log(newFriend)
 
             $.post("/api/friends", newFriend)
                 .then(function (data) {
                     $('.modal-body').empty();
-                    
+
                     // var newFriendIMG = $('<img').attr('src', data[1].photo)
                     $('.modal-body').append(data[0].name)
                     $('.modal-body').append($('<img>').attr('src', data[1].photo))
@@ -225,7 +230,19 @@
                 });
         });
 
-       
+
+        function clearTable() {
+            alert("Clearing...");
+
+            // Clear the tables on the server and then empty the elements on the client
+            $.ajax({ url: "/api/clear", method: "POST" }).then(function () {
+              
+            });
+        }
+
+        $("#clear").on("click", clearTable);
+
+
     </script>
 
 

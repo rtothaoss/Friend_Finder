@@ -15,6 +15,7 @@ module.exports = function (app) {
 
         var totalDifferences = [];
 
+
         for (x = 0; x < friendsData.length; x++) {
 
             var friendsDataScores = friendsData[x].scores;
@@ -57,6 +58,12 @@ module.exports = function (app) {
 
 
     })
+
+    app.post("/api/clear", function(req, res) {
+        
+        friendsData.length = [];
+        res.json({ ok: true });
+      });
 
 
 }
