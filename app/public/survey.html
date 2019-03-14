@@ -174,10 +174,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p></p>
+                    <!-- <div class='modal-name'></div>
+                    <div class='modal-image'></div> -->
+                    
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -223,9 +224,22 @@
                 .then(function (data) {
                     $('.modal-body').empty();
 
-                    // var newFriendIMG = $('<img').attr('src', data[1].photo)
-                    $('.modal-body').append(data[0].name)
-                    $('.modal-body').append($('<img>').attr('src', data[1].photo))
+                    var friendDiv = $('<div>')
+                    
+                    var p = $('<p>').text(data[0].name)
+
+                    var friendImage = $('<img>')
+                    friendImage.attr('src', data[1].photo)
+                    friendImage.addClass('img-fluid')
+
+                    friendDiv.append(p)
+                    friendDiv.append(friendImage)
+
+                    $('.modal-body').append(friendDiv)
+
+
+                    // $('.modal-body').append(data[0].name)
+                    // $('.modal-body').append($('<img>').attr('src', data[1].photo).addClass('img-fluid'))
                     $('.modal').modal()
                 });
         });
