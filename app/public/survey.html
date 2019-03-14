@@ -159,9 +159,10 @@
         <hr class="my-4">
         <footer class="footer mt-4">
             <div class="container">
-              <p><a href="#" id="clear">Clear Table</a> | <a href="https://github.com/rtothaoss/Friend_Finder">Github Repo</a> 
+                <p><a href="/api/friends" id="friendsAPI">Friends API Table</a> | <a
+                        href="https://github.com/rtothaoss/Friend_Finder">Github Repo</a>
             </div>
-          </footer>
+        </footer>
     </div>
 
     <div class="modal" tabindex="-1" role="dialog">
@@ -176,7 +177,7 @@
                 <div class="modal-body">
                     <!-- <div class='modal-name'></div>
                     <div class='modal-image'></div> -->
-                    
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -225,7 +226,7 @@
                     $('.modal-body').empty();
 
                     var friendDiv = $('<div>')
-                    
+
                     var p = $('<p>').text(data[0].name)
 
                     var friendImage = $('<img>')
@@ -243,18 +244,6 @@
                     $('.modal').modal()
                 });
         });
-
-
-        function clearTable() {
-            alert("Clearing...");
-
-            // Clear the tables on the server and then empty the elements on the client
-            $.ajax({ url: "/api/clear", method: "POST" }).then(function () {
-              
-            });
-        }
-
-        $("#clear").on("click", clearTable);
 
 
     </script>
